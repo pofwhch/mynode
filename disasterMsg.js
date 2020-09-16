@@ -73,6 +73,7 @@ function handleDisasterMsgList(response) {
     });
 }
 
+
 /**
  * Array Obejct 데이터를 CSV File로 저장한다.
  * @param {Array} list - 재난문자발송 현황 데이터
