@@ -28,7 +28,9 @@ function getDisasterMsgList(pageNo, numOfRows) {
         path: `/1741000/DisasterMsg2/getDisasterMsgList?ServiceKey=${serviceKey}&type=${type}&pageNo=${pageNo}&numOfRows=${numOfRows}&flag=${flag}`
     };
 
+    console.log("[", new Date(), "] 재난문자 API 호출 시작");
     http.request(options, (response) => {
+        console.log("[", new Date(), "] 재난문자 API 호출결과 수신 완료");
         handleDisasterMsgList(response);
     }).end();
 }
@@ -49,13 +51,18 @@ function handleDisasterMsgList(response) {
     response.on('end', () => {
         parser.parseString(disaterMsgList, (err, result) => {
             var rowDatas = result.DisasterMsg.row;
+            console.log("[", new Date(), "] 재난문자", rowDatas.length, "건 조회");
+            
             var list = new Array();
+            var strLocation = '서울특별시';
 
             // 모든 key의 value 정보가 array로 저장되어 있음
             // 실제 데이터는 1건만 존재
             // csv 파일에 "["aaa"]" 형태로 데이터가 write 되어 실제 값만 write 되도록 처리
             for (var row of rowDatas) {
                 // console.log(row);
+                // 특정 지역에 대한 데이터만 저장하고자 할 경우
+                if (!row.location_name[0].includes(strLocation)) continue;
                 
                 var item = {
                     md101_sn: row.md101_sn[0],
@@ -68,11 +75,13 @@ function handleDisasterMsgList(response) {
 
                 list.push(item);
             }
+
+            // csv 파일 생성
+            console.log("[", new Date(), "]", strLocation, "지역 재난문자 총", list.length, "건");
             writeCsvFile(list);
         });
     });
 }
-
 
 /**
  * Array Obejct 데이터를 CSV File로 저장한다.
@@ -88,13 +97,19 @@ async function writeCsvFile (list) {
         append: true,
         bom: true
     }
+    console.log("[", new Date(), "] 재난문자 CSV 파일 생성 시작 :", list.length, "건");
     const cvs = new ObjectToCsv(list);
     await cvs.toDisk('./disaterMsg.csv', options);
+    console.log("[", new Date(), "] 재난문자 CSV 파일 생성 완료 :", list.length, "건");
 }
 
-for (let i = 1; i < 11; i++) {
-    setTimeout(() => {
-        console.log(new Date().toUTCString());
-        getDisasterMsgList(i, 1000);
-    }, 1000 * i);
-}
+/**
+ * 원하는 데이터를 수집하도록 명령
+ */
+getDisasterMsgList(1, 1000);
+// for (let i = 1; i < 11; i++) {
+//     setTimeout(() => {
+//         console.log(new Date().toUTCString());
+//         getDisasterMsgList(i, 1000);
+//     }, 1000 * i);
+// }
