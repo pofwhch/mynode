@@ -59,22 +59,37 @@ function handleDisasterMsgList(response) {
             // 모든 key의 value 정보가 array로 저장되어 있음
             // 실제 데이터는 1건만 존재
             // csv 파일에 "["aaa"]" 형태로 데이터가 write 되어 실제 값만 write 되도록 처리
-            for (var row of rowDatas) {
-                // console.log(row);
+            rowDatas.forEach(element => {
                 // 특정 지역에 대한 데이터만 저장하고자 할 경우
-                if (!row.location_name[0].includes(strLocation)) continue;
+                if (!element.location_name[0].includes(strLocation)) return;
                 
                 var item = {
-                    md101_sn: row.md101_sn[0],
-                    create_date: row.create_date[0],
-                    location_id: row.location_id[0],
-                    location_name: row.location_name[0],
-                    send_platform: row.send_platform[0],
-                    msg: row.msg[0]
+                    md101_sn: element.md101_sn[0],
+                    create_date: element.create_date[0],
+                    location_id: element.location_id[0],
+                    location_name: element.location_name[0],
+                    send_platform: element.send_platform[0],
+                    msg: element.msg[0]
                 };
 
                 list.push(item);
-            }
+            });
+            // for (var row of rowDatas) {
+            //     // console.log(row);
+            //     // 특정 지역에 대한 데이터만 저장하고자 할 경우
+            //     if (!row.location_name[0].includes(strLocation)) continue;
+                
+            //     var item = {
+            //         md101_sn: row.md101_sn[0],
+            //         create_date: row.create_date[0],
+            //         location_id: row.location_id[0],
+            //         location_name: row.location_name[0],
+            //         send_platform: row.send_platform[0],
+            //         msg: row.msg[0]
+            //     };
+
+            //     list.push(item);
+            // }
 
             // csv 파일 생성
             console.log("[", new Date(), "]", strLocation, "지역 재난문자 총", list.length, "건");

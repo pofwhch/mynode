@@ -1,0 +1,30 @@
+{
+    "sidos": [
+        {"sido":"서울특별시","sigungu":""},
+        {"sido":"서울특별시","sigungu":"도봉구"},
+        {"sido":"서울특별시","sigungu":"은평구"},
+        {"sido":"서울특별시","sigungu":"동대문구"},
+        {"sido":"서울특별시","sigungu":"동작구"},
+        {"sido":"서울특별시","sigungu":"금천구"},
+        {"sido":"서울특별시","sigungu":"구로구"},
+        {"sido":"서울특별시","sigungu":"종로구"},
+        {"sido":"서울특별시","sigungu":"강북구"},
+        {"sido":"서울특별시","sigungu":"중랑구"},
+        {"sido":"서울특별시","sigungu":"강남구"},
+        {"sido":"서울특별시","sigungu":"강서구"},
+        {"sido":"서울특별시","sigungu":"중구"},
+        {"sido":"서울특별시","sigungu":"강동구"},
+        {"sido":"서울특별시","sigungu":"광진구"},
+        {"sido":"서울특별시","sigungu":"마포구"},
+        {"sido":"서울특별시","sigungu":"서초구"},
+        {"sido":"서울특별시","sigungu":"성북구"},
+        {"sido":"서울특별시","sigungu":"노원구"},
+        {"sido":"서울특별시","sigungu":"송파구"},
+        {"sido":"서울특별시","sigungu":"서대문구"},
+        {"sido":"서울특별시","sigungu":"양천구"},
+        {"sido":"서울특별시","sigungu":"영등포구"},
+        {"sido":"서울특별시","sigungu":"관악구"},
+        {"sido":"서울특별시","sigungu":"성동구"},
+        {"sido":"서울특별시","sigungu":"용산구"}
+    ]
+}
