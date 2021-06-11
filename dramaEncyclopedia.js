@@ -5,6 +5,34 @@ const ObjectToCsv = require('objects-to-csv')
 
 const parser = new xml2js.Parser();
 
+function handleContentDataList() {
+    fs.readdir('./data/CONTENT', function(err, filelist) {
+        if (err) {
+            console.log('[', new Date(), '] read CONTENT folder files...error... ');
+            console.log('[', new Date(), '] ', err);
+        } else {
+            console.log('[', new Date(), '] CONTENT Files', filelist.length, ' 개');
+            filelist.forEach(file => {
+
+            });
+        }
+    });
+}
+
+function handleSeriesDataList() {
+    fs.readdir('./data/SERIES', function(err, filelist) {
+        if (err) {
+            console.log('[', new Date(), '] read SEIRES folder files...error... ');
+            console.log('[', new Date(), '] ', err);
+        } else {
+            console.log('[', new Date(), '] SEIRES Files', filelist.length, ' 개');
+            filelist.forEach(file => {
+
+            });
+        }
+    });
+}
+
 function handleSeriesData() {
     const xml = fs.readFileSync(__dirname + '/data/MTO_SERIES_20210330.xml', 'utf-8');
 
@@ -422,7 +450,10 @@ async function writeCsvFile (list, fileName) {
     console.log("[", new Date(), `] ${fileName} CSV 파일 생성 완료 :`, list.length, "건 완료");
 }
 
-handleSeriesData();
-handleMasterSeriesData();
-handleContentData();
-handleMasterContentData();
+// handleSeriesData();
+// handleMasterSeriesData();
+// handleContentData();
+// handleMasterContentData();
+
+handleContentDataList();
+handleSeriesDataList();

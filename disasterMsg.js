@@ -114,7 +114,7 @@ async function writeCsvFile (list) {
     }
     console.log("[", new Date(), "] 재난문자 CSV 파일 생성 시작 :", list.length, "건");
     const cvs = new ObjectToCsv(list);
-    await cvs.toDisk('./disaterMsg.csv', options);
+    await cvs.toDisk('./files/disaterMsg.csv', options);
     console.log("[", new Date(), "] 재난문자 CSV 파일 생성 완료 :", list.length, "건");
 }
 
