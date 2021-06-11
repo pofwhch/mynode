@@ -1,0 +1,23 @@
+{
+    "database": {
+        "name": "postgreSql",
+        "host": "127.0.0.1",
+        "port": 5432,
+        "user": "postgre",
+        "password": "postgre1234!",
+        "database": 30000
+    },
+    "contentMeta": {
+
+    },
+    "contentMasterMeta": {
+
+    },
+    "seriesMeta": {
+
+    },
+    "seriesMasterMeta": {
+
+    }
+  }
+  
